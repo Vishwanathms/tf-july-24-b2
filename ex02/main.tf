@@ -37,7 +37,7 @@ resource "aws_vpc" "main_prod" {
   provider = aws.prod
   cidr_block = var.cidr
   tags = {
-    Name = "vpc_prod"
+    Name = "vpc_prod_1"
     owner = "vishwa"
     dep = "hr"
     env = var.env
@@ -53,7 +53,7 @@ resource "aws_vpc_ipv4_cidr_block_association" "secondary_cidr" {
 resource "azurerm_resource_group" "rg01-1" {
   provider = azurerm.dr
     location = "East us"
-    name = "vnet01"
+    name = "rg01"
 }
 
 resource "azurerm_virtual_network" "name" {

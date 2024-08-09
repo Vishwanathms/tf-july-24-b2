@@ -1,0 +1,206 @@
+{
+    "format_version": "1.2",
+    "terraform_version": "1.9.2",
+    "variables": {
+        "cidr": {
+            "value": "192.168.0.0/20"
+        },
+        "env": {
+            "value": "dev"
+        },
+        "location": {
+            "value": "us-east-1"
+        }
+    },
+    "planned_values": {
+        "root_module": {
+            "resources": [
+                {
+                    "address": "aws_vpc.main_dev",
+                    "mode": "managed",
+                    "type": "aws_vpc",
+                    "name": "main_dev",
+                    "provider_name": "registry.terraform.io/hashicorp/aws",
+                    "schema_version": 1,
+                    "values": {
+                        "assign_generated_ipv6_cidr_block": null,
+                        "cidr_block": "192.168.0.0/20",
+                        "enable_dns_support": true,
+                        "instance_tenancy": "default",
+                        "ipv4_ipam_pool_id": null,
+                        "ipv4_netmask_length": null,
+                        "ipv6_ipam_pool_id": null,
+                        "ipv6_netmask_length": null,
+                        "tags": {
+                            "Name": "vpc_dev",
+                            "dep": "hr",
+                            "env": "dev",
+                            "owner": "vishwa"
+                        },
+                        "tags_all": {
+                            "Name": "vpc_dev",
+                            "dep": "hr",
+                            "env": "dev",
+                            "owner": "vishwa"
+                        }
+                    },
+                    "sensitive_values": {
+                        "tags": {},
+                        "tags_all": {}
+                    }
+                }
+            ]
+        }
+    },
+    "resource_changes": [
+        {
+            "address": "aws_vpc.main_dev",
+            "mode": "managed",
+            "type": "aws_vpc",
+            "name": "main_dev",
+            "provider_name": "registry.terraform.io/hashicorp/aws",
+            "change": {
+                "actions": [
+                    "create"
+                ],
+                "before": null,
+                "after": {
+                    "assign_generated_ipv6_cidr_block": null,
+                    "cidr_block": "192.168.0.0/20",
+                    "enable_dns_support": true,
+                    "instance_tenancy": "default",
+                    "ipv4_ipam_pool_id": null,
+                    "ipv4_netmask_length": null,
+                    "ipv6_ipam_pool_id": null,
+                    "ipv6_netmask_length": null,
+                    "tags": {
+                        "Name": "vpc_dev",
+                        "dep": "hr",
+                        "env": "dev",
+                        "owner": "vishwa"
+                    },
+                    "tags_all": {
+                        "Name": "vpc_dev",
+                        "dep": "hr",
+                        "env": "dev",
+                        "owner": "vishwa"
+                    }
+                },
+                "after_unknown": {
+                    "arn": true,
+                    "default_network_acl_id": true,
+                    "default_route_table_id": true,
+                    "default_security_group_id": true,
+                    "dhcp_options_id": true,
+                    "enable_dns_hostnames": true,
+                    "enable_network_address_usage_metrics": true,
+                    "id": true,
+                    "ipv6_association_id": true,
+                    "ipv6_cidr_block": true,
+                    "ipv6_cidr_block_network_border_group": true,
+                    "main_route_table_id": true,
+                    "owner_id": true,
+                    "tags": {},
+                    "tags_all": {}
+                },
+                "before_sensitive": false,
+                "after_sensitive": {
+                    "tags": {},
+                    "tags_all": {}
+                }
+            }
+        }
+    ],
+    "configuration": {
+        "provider_config": {
+            "aws": {
+                "name": "aws",
+                "full_name": "registry.terraform.io/hashicorp/aws"
+            },
+            "aws.dev": {
+                "name": "aws",
+                "full_name": "registry.terraform.io/hashicorp/aws",
+                "alias": "dev",
+                "expressions": {
+                    "profile": {
+                        "constant_value": "aws-b1-d1"
+                    },
+                    "region": {
+                        "references": [
+                            "var.location"
+                        ]
+                    }
+                }
+            }
+        },
+        "root_module": {
+            "resources": [
+                {
+                    "address": "aws_vpc.main_dev",
+                    "mode": "managed",
+                    "type": "aws_vpc",
+                    "name": "main_dev",
+                    "provider_config_key": "aws.dev",
+                    "expressions": {
+                        "cidr_block": {
+                            "references": [
+                                "var.cidr"
+                            ]
+                        },
+                        "tags": {
+                            "references": [
+                                "var.env"
+                            ]
+                        }
+                    },
+                    "schema_version": 1
+                }
+            ],
+            "variables": {
+                "cidr": {},
+                "env": {},
+                "location": {
+                    "default": "us-east-1"
+                }
+            }
+        }
+    },
+    "checks": [
+        {
+            "address": {
+                "kind": "var",
+                "name": "env",
+                "to_display": "var.env"
+            },
+            "status": "pass",
+            "instances": [
+                {
+                    "address": {
+                        "to_display": "var.env"
+                    },
+                    "status": "pass"
+                }
+            ]
+        },
+        {
+            "address": {
+                "kind": "var",
+                "name": "location",
+                "to_display": "var.location"
+            },
+            "status": "pass",
+            "instances": [
+                {
+                    "address": {
+                        "to_display": "var.location"
+                    },
+                    "status": "pass"
+                }
+            ]
+        }
+    ],
+    "timestamp": "2024-08-08T06:35:51Z",
+    "applyable": true,
+    "complete": true,
+    "errored": false
+}
