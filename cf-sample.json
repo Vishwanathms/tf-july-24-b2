@@ -1,0 +1,28 @@
+{
+    "AWSTemplateFormatVersion" : "2010-09-09",
+  
+    "Description" : "Simple Cloudformation template",
+  
+    "Parameters" : {
+      "Mykey" : {
+        "Description" : "My Key",
+        "Type" : "String"
+        }
+    },
+    "Resources" : {
+      "Myinstance" : {
+        "Type" : "AWS::EC2::Instance",
+        "Properties" : {
+          "InstanceType" : "m3.medium",
+          "KeyName" : "key1",
+          "ImageId" : "ami-0de53d8956e8dcf80"
+        }
+      }
+    },
+    "Outputs" : {
+      "InstanceId" : {
+        "Description" : "InstanceId of the newly created EC2 instance",
+        "Value" : { "Ref" : "Myinstance" }
+      }
+    }
+  }

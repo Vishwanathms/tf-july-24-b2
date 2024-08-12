@@ -14,15 +14,27 @@ resource "aws_vpc" "main_dev" {
     dep = "hr"
     env = var.env
   }
-
 }
 
 resource "aws_subnet" "Subnets" {
+  provider = aws.dev
   count = length(var.subnet_cidr)
   vpc_id = aws_vpc.main_dev.id
   cidr_block = var.subnet_cidr[count.index]
   tags = {
     Name = var.sub_names[count.index]
+    env = var.env
+  }
+}
+
+
+resource "aws_vpc" "main_dev1" {
+  provider = aws.dev
+  cidr_block = var.cidr
+  tags = {
+    Name = "vpc-2"
+    owner = "vishwa"
+    dep = "hr"
     env = var.env
   }
 }

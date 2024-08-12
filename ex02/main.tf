@@ -3,7 +3,8 @@
 provider "aws" {
   alias = "dev"
   region = var.location
-  profile = "aws-b1-d1"
+  profile = var.profile
+  #profile = "aws-b1-d1"
 }
 
 # the below provider is for 2nd accoutn which is prod on aws

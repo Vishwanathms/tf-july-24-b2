@@ -20,9 +20,16 @@ azure -- 1
 one vpc in account1 
 one vpc in account-2
 
-one rg in azure sub1
-one vnet in azure sub1
+one rg in azure subcription-1
+one vnet in azure subcription-1
 
 one of the vpc has been added with secondary cidr
 
 the vnet is having multiple address space.
+
+## terraform Features
+* variables -- String 
+* multi providers with alias names
+* provide diff profiles names
+* variable in tags
+* 
