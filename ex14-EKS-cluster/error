@@ -1,0 +1,4 @@
+Error-1 
+-- This is from the AWS side and not our config 
+
+eCluster, https response error StatusCode: 400, RequestID: f99cff9a-3de8-4683-a8d5-9fd987140a9a, UnsupportedAvailabilityZoneException: Cannot create cluster 'eks-tf' because EKS does not suppoff9a-3de8-4683-a8d5-9fd987140a9a, UnsupportedAvailabilityZoneException: Cannot create cluster 'eks-tf' because EKS does not support creating control plane instances in us-east-1e, the targeted availability zone. Retry cluster creation using control plane subnets that span at least two of these availability zones: us-east-1a, us-east-1b, us-east-1c, us-east-1d, us-east-1f. Note, post cluster creation, you can run worker nodes in separate subnets/availability zones from control plane subnets/availability zones passed during cluster creation

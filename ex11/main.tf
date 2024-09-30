@@ -96,6 +96,10 @@ resource "aws_security_group" "sg" {
 
 resource "null_resource" "installonec2" {
 
+  triggers = {
+    always_run = "${timestamp()}" 
+  }
+
   provisioner "remote-exec" {
     inline = [ 
       "echo -e 'n\np\n1\n\n\nw' | sudo fdisk /dev/xvdf",
@@ -103,10 +107,9 @@ resource "null_resource" "installonec2" {
       "sudo mkdir -p /mnt/ed01",
       "sudo mount /dev/xvdf1 /mnt/ed01",
       "sudo chmod 777 /mnt/ed01",
-      "sudo echo 'test file' >> /mnt/ed01/file1.txt"
+      "sudo echo 'test file1' >> /mnt/ed01/file1.txt"
      
      ]
-
   }
   
   connection {
@@ -120,6 +123,32 @@ resource "null_resource" "installonec2" {
 
   depends_on = [ aws_volume_attachment.example, local_file.private_key ]
   
+}
+
+resource "null_resource" "local" {
+
+  provisioner "local-exec" {
+    command = "echo 'Sample file testing' > ./file2.txt"
+  }
+
+}
+
+resource "null_resource" "file-transfer" {
+
+  provisioner "file" {
+    source = "./file2.txt"
+    destination = "/home/ec2-user/file2.txt"
+  }
+
+  connection {
+    host = aws_instance.example_instance.public_ip
+    user = "ec2-user"
+    #private_key = file("./key1.pem")
+    private_key = file(local_file.private_key.filename)
+    #password = 
+    type = "ssh"     
+  }
+  depends_on = [ null_resource.local ]
 }
 
 # Save the private key to a local file
